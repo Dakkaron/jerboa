@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Jerboa per Lemmy</string>
+    <string name="app_name">Jerboa per Lemmy senza Zangendeutsch</string>
     <string name="comment_node_goto_comment">Mostra Commento</string>
     <string name="comment_node_view_source">Mostra Markdown</string>
     <string name="comment_node_copy_permalink">Copia Permalink</string>

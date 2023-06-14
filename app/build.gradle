@@ -42,13 +42,14 @@ android {
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            applicationIdSuffix '.nozangendeutsch'
             if(project.hasProperty("RELEASE_STORE_FILE")) {
                 signingConfig signingConfigs.release
             }
         }
 
         debug {
-            applicationIdSuffix '.debug'
+            applicationIdSuffix '.nozangendeutsch.debug'
             versionNameSuffix ' (DEBUG)'
         }
     }
