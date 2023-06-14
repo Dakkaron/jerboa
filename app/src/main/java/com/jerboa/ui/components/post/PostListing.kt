@@ -76,6 +76,7 @@ import com.jerboa.hostName
 import com.jerboa.isImage
 import com.jerboa.isSameInstance
 import com.jerboa.nsfwCheck
+import com.jerboa.ui.components.comment.replaceZangendeutschWords
 import com.jerboa.ui.components.common.ActionBarButton
 import com.jerboa.ui.components.common.CircularIcon
 import com.jerboa.ui.components.common.CommentOrPostNodeHeader
@@ -287,7 +288,7 @@ fun PostName(
     }
 
     Text(
-        text = postView.post.name,
+        text = replaceZangendeutschWords(postView.post.name),
         style = MaterialTheme.typography.titleLarge,
         color = color,
     )
@@ -403,13 +404,13 @@ fun PostBody(
                                 .padding(MEDIUM_PADDING),
                         ) {
                             MyMarkdownText(
-                                markdown = text,
+                                markdown = replaceZangendeutschWords(text),
                                 onClick = {},
                             )
                         }
                     } else {
                         PreviewLines(
-                            text = text,
+                            text = replaceZangendeutschWords(text),
                             modifier = Modifier
                                 .padding(MEDIUM_PADDING),
                         )

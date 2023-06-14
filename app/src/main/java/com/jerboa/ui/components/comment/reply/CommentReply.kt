@@ -27,6 +27,7 @@ import com.jerboa.datatypes.sampleCommentView
 import com.jerboa.db.Account
 import com.jerboa.ui.components.comment.CommentNodeHeader
 import com.jerboa.ui.components.comment.mentionnode.CommentMentionNodeHeader
+import com.jerboa.ui.components.comment.replaceZangendeutschWords
 import com.jerboa.ui.components.comment.replynode.CommentReplyNodeHeader
 import com.jerboa.ui.components.common.MarkdownTextField
 import com.jerboa.ui.components.post.PostNodeHeader
@@ -172,7 +173,7 @@ fun RepliedPost(
             onPersonClick = onPersonClick,
             isModerator = isModerator,
         )
-        val text = postView.post.body ?: run { postView.post.name }
+        val text = replaceZangendeutschWords(postView.post.body ?: run { postView.post.name })
         SelectionContainer {
             Text(text = text)
         }

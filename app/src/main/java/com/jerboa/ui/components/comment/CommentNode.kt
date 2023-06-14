@@ -137,6 +137,22 @@ fun CommentNodeHeaderPreview() {
     )
 }
 
+fun replaceZangendeutschWords(commentContent: String): String {
+    var modifiedCommentContent: String = commentContent
+    val wordMap = mapOf(
+        "Meimei" to "Meme",
+        "Unter" to "Community",
+        "Lases" to "Reddit",
+        "Lasses" to "Reddit",
+        "Lassmich" to "Lemmy",
+        "Selbstie" to "Selfie",
+    )
+    for (word in wordMap.keys) {
+        modifiedCommentContent = modifiedCommentContent.replace(Regex("\\b$word\\b", RegexOption.IGNORE_CASE), wordMap[word] ?:"")
+    }
+    return modifiedCommentContent
+}
+
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun CommentBody(
@@ -150,7 +166,7 @@ fun CommentBody(
     } else if (comment.deleted) {
         stringResource(R.string.comment_body_deleted)
     } else {
-        comment.content
+        replaceZangendeutschWords(comment.content)
     }
 
     if (viewSource) {
@@ -457,7 +473,7 @@ fun PostAndCommunityContextHeader(
         modifier = Modifier.padding(top = LARGE_PADDING),
     ) {
         Text(
-            text = post.name,
+            text = replaceZangendeutschWords(post.name),
             style = MaterialTheme.typography.titleLarge,
             modifier = Modifier.clickable { onPostClick(post.id) },
         )
